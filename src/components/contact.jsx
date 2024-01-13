@@ -10,7 +10,7 @@ class ContactCard extends React.Component {
     return (
       <div className="uk-width-1-2@s uk-flex">
         <div className="uk-width-auto uk-margin-right">
-          <FaAddressCard size="3em" color="#1C5EB8" />
+          <FaAddressCard size="3em" />
         </div>
         <div className="uk-width-expand">
           <span className="uk-comment-title uk-margin-remove">
@@ -46,7 +46,7 @@ class OmronContactCard extends React.Component {
     return (
       <div className="uk-width-1-2@s uk-flex">
         <div className="uk-width-auto uk-margin-right">
-          <FaEnvelope size="3em" color="#1C5EB8" />
+          <FaEnvelope size="3em" />
         </div>
         <div className="uk-width-expand">
           <span className="uk-comment-title uk-margin-remove">
