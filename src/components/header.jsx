@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import Authors from '../components/authors.jsx';
+import CorporateLogo from '../components/logo.jsx';
 import { FaGithub, FaYoutube, FaMedium } from 'react-icons/fa6';
 import { FaFilePdf } from 'react-icons/fa';
 
@@ -24,7 +25,7 @@ class ResourceBtn extends React.Component {
     return (
       <>
         <a className={aClass} href={this.props.url} target="_blank">
-          <FaIcon size="2em" color="#1C5EB8" />
+          <FaIcon size="2em" />
           <span className="uk-margin-small-left uk-margin-small-right uk-text-primary uk-text-bolder">
             {this.props.title}
           </span>
@@ -44,30 +45,42 @@ export default class Header extends React.Component {
       this.props.title.length > 15 ? 'h2' : 'h1'
     } uk-text-primary`;
     return (
-      <div className="uk-cover-container uk-background-secondary">
-        <div className="uk-container uk-container-small uk-section">
-          <div className="uk-text-center uk-text-bold">
-            <p className={titleClass}>{this.props.title}</p>
-            <span className="uk-label uk-label-primary uk-text-center uk-margin-bottom">
-              {this.props.conference}
-            </span>
-          </div>
-          <Authors
-            authors={this.props.authors}
-            affiliations={this.props.affiliations}
-            meta={this.props.meta}
-          />
-          <div className="uk-flex uk-flex-center uk-margin-top">
-            {Object.keys(this.props.resources).map((key) => (
-              <ResourceBtn
-                url={this.props.resources[key]}
-                title={key}
-                key={'header-' + key}
+      <>
+        <div className="uk-navbar uk-navbar-container">
+          <div className="uk-navbar-center">
+            <a href="https://www.omron.com/sinicx" target="_blank">
+              <CorporateLogo
+                size="sm"
+                inverted={this.props.theme == 'dark' ? true : false}
               />
-            ))}
+            </a>
           </div>
         </div>
-      </div>
+        <div className="uk-cover-container uk-background-secondary">
+          <div className="uk-container uk-container-small uk-section">
+            <div className="uk-text-center uk-text-bold">
+              <p className={titleClass}>{this.props.title}</p>
+              <span className="uk-label uk-label-primary uk-text-center uk-margin-bottom">
+                {this.props.conference}
+              </span>
+            </div>
+            <Authors
+              authors={this.props.authors}
+              affiliations={this.props.affiliations}
+              meta={this.props.meta}
+            />
+            <div className="uk-flex uk-flex-center uk-margin-top">
+              {Object.keys(this.props.resources).map((key) => (
+                <ResourceBtn
+                  url={this.props.resources[key]}
+                  title={key}
+                  key={'header-' + key}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </>
     );
   }
 }
