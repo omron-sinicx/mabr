@@ -12,8 +12,6 @@ import Contact from '../components/contact.jsx';
 import Footer from '../components/footer.jsx';
 import Citation from '../components/citation.jsx';
 import SpeakerDeck from '../components/speakerdeck.jsx';
-import ForkMeOnGitHub from 'fork-me-on-github';
-
 import data from '../../template.yaml';
 
 class Template extends React.Component {
@@ -55,13 +53,6 @@ class Template extends React.Component {
             { name: 'twitter:site', content: data.twitter },
           ]}
         />
-        <div data-uk-sticky className="uk-visible@l">
-          <ForkMeOnGitHub
-            repo={data.resources.code}
-            colorBackground="#999"
-            colorOctocat="white"
-          />
-        </div>
         <Header
           title={data.title}
           conference={data.conference}
@@ -69,6 +60,7 @@ class Template extends React.Component {
           affiliations={data.affiliations}
           meta={data.meta}
           resources={data.resources}
+          theme={data.theme}
         />
         <div className="uk-container uk-container-small">
           <Overview overview={data.overview} />
