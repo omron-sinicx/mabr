@@ -4,7 +4,11 @@
 - **Demo**: ⛅[light-theme](https://omron-sinicx.github.io/ncf2/) 🕶️[dark-theme](https://omron-sinicx.github.io/ctrm/)
 
 > [!TIP]
-> You can switch themes by selecting [theme scss files](https://github.com/omron-sinicx/projectpage-template/blob/update-package-versions/src/js/styles.js#L1-L2)
+> You can switch themes by setting [theme field in template.yaml](https://github.com/omron-sinicx/projectpage-template/blob/main/template.yaml#L1-L2)
+
+```yaml
+theme: default # default || dark
+```
 
 ## Prerequisites
 - Before you begin, ensure you have met the following requirements:

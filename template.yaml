@@ -1,6 +1,7 @@
+theme: default # default || dark
 organization: OMRON SINIC X
 twitter: '@omron_sinicx'
-title: 'Mattone'
+title: 'Multi-Agent Behavior Retrieval: Retrieval-Augmented Policy Training for Cooperative Manipulation by Mobile Robots'
 conference: IJCAI2020
 resources:
   paper: https://arxiv.org/abs/1909.13111
@@ -12,17 +13,17 @@ image: https://omron-sinicx.github.io/multipolar/assets/teaser.png
 url: https://omron-sinicx.github.io/multipolar
 speakerdeck: b7a0614c24014dcbbb121fbb9ed234cd
 authors:
-  - name: Mohammadamin Barekatain*
+  - name: So Kuroki
     affiliation: [1, 2]
     url: http://barekatain.me/
     position: intern
-  - name: Ryo Yonetani
+  - name: Mai Nishimura
     affiliation: [1]
-    position: principal investigator
-    url: https://yonetaniryo.github.io/
-  - name: Masashi Hamaya
+    position: Senior Researcher
+    url: https://denkiwakame.github.io
+  - name: Tadashi Kozuno
     affiliation: [1]
-    position: senior researcher
+    position: Senior Researcher
     url: https://sites.google.com/view/masashihamaya/home
     #  - name: Mai Nishimura
     #    affiliation: [1]
