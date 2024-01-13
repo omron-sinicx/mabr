@@ -9,7 +9,7 @@ export default class Citation extends React.Component {
   render() {
     return (
       <div className="uk-section">
-        <h2>Citation</h2>
+        <h3 className="uk-heading-line uk-text-center">CITATION</h3>
         <pre>
           <code>{this.props.bibtex}</code>
         </pre>

@@ -23,7 +23,9 @@ export default class Video extends React.Component {
     };
     return (
       <div className="uk-section">
-        <h2 id="video">Video</h2>
+        <h3 className="uk-heading-line uk-text-center" id="video">
+          VIDEO
+        </h3>
         <div style={wrapperClass}>
           <iframe
             style={innerClass}

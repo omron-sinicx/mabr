@@ -11,7 +11,7 @@ export default class Results extends React.Component {
     if (!this.props.results) return null;
     return (
       <div className="uk-section">
-        <h2>Results</h2>
+        <h3 className="uk-heading-line uk-text-center">RESULTS</h3>
         <p>{this.props.results[0]}</p>
         <h3>Motion Planning (MP) Dataset</h3>
         <p>{this.props.results[1]}</p>

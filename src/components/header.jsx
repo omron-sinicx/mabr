@@ -41,7 +41,7 @@ export default class Header extends React.Component {
 
   render() {
     const titleClass = `uk-${
-      this.props.title.length > 100 ? 'h2' : 'h1'
+      this.props.title.length > 15 ? 'h2' : 'h1'
     } uk-text-primary`;
     return (
       <div className="uk-cover-container uk-background-secondary">

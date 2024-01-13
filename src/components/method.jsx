@@ -6,7 +6,10 @@ class Content extends React.Component {
     super(props);
   }
   render() {
-    if (this.props.title) return <h2>{this.props.title}</h2>;
+    if (this.props.title)
+      return (
+        <h3 className="uk-heading-line uk-text-center">{this.props.title}</h3>
+      );
     if (this.props.text) return <p>{this.props.text}</p>;
     if (this.props.image)
       return (

@@ -17,7 +17,7 @@ export default class Overview extends React.Component {
           height=""
           alt=""
         />
-        <h2>Overview</h2>
+        <h3 className="uk-heading-line uk-text-center">OVERVIEW</h3>
         <p>{this.props.overview}</p>
       </div>
     );

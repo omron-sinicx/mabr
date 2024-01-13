@@ -13,7 +13,7 @@ class ContactCard extends React.Component {
           <FaAddressCard size="3em" color="#1C5EB8" />
         </div>
         <div className="uk-width-expand">
-          <h4 className="uk-comment-title uk-margin-remove">
+          <span className="uk-comment-title uk-margin-remove">
             <a
               target="_blank"
               className="uk-link-reset"
@@ -21,7 +21,7 @@ class ContactCard extends React.Component {
             >
               {this.props.author.name}
             </a>
-          </h4>
+          </span>
           <ul className="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
             <li className="uk-visible@m">
               <a href="#">{this.props.author.position}</a>
@@ -49,11 +49,11 @@ class OmronContactCard extends React.Component {
           <FaEnvelope size="3em" color="#1C5EB8" />
         </div>
         <div className="uk-width-expand">
-          <h4 className="uk-comment-title uk-margin-remove">
+          <span className="uk-comment-title uk-margin-remove">
             <a className="uk-link-reset" href="#">
               contact@sinicx.com
             </a>
-          </h4>
+          </span>
           <ul className="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
             <li>
               <a href="https://www.omron.com/sinicx/" target="_blank">
@@ -75,7 +75,7 @@ export default class Contact extends React.Component {
   render() {
     return (
       <div className="uk-section">
-        <h2>Contact</h2>
+        <h3 className="uk-heading-line uk-text-center">CONTACT</h3>
         <div className="uk-grid-medium" data-uk-grid>
           {this.props.contact_ids.map((cid) => {
             return (

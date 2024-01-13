@@ -1,6 +1,6 @@
 organization: OMRON SINIC X
-twitter: "@omron_sinicx"
-title: "MULTIPOLAR: Multi-Source Policy Aggregation for Transfer Reinforcement Learning between Diverse Environmental Dynamics"
+twitter: '@omron_sinicx'
+title: 'Mattone'
 conference: IJCAI2020
 resources:
   paper: https://arxiv.org/abs/1909.13111
@@ -35,7 +35,7 @@ affiliations:
   - OMRON SINIC X Corporation
   - Technical University of Munich
 meta:
-  - "* work done as an intern at OMRON SINIC X."
+  - '* work done as an intern at OMRON SINIC X.'
 bibtex: >
   # arXiv version
 
