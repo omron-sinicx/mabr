@@ -11,7 +11,7 @@ const loadTheme = async () => {
     } else {
       await import('../scss/theme.scss');
     }
-    UIKit.use(Icons);
+    UIkit.use(Icons);
   } catch (err) {
     console.error(err);
   }
