@@ -1,3 +1,6 @@
+# :warning: DO NOT USE THIS BRANCH UNTIL LOGO RELEASE (2024 Summer)
+- See https://sinicx.sharepoint.com/:u:/r/sites/OSX/SitePages/%E3%83%AD%E3%82%B4%E4%BD%9C%E6%88%90---Logo-design.aspx?csf=1&web=1&share=EVUOoIvp_xBBu86MfZIoRzwBlGsX928w_FniJL0z3aeSZQ&e=LeINXk
+
 # sinicx-template
 [![build](https://github.com/omron-sinicx/projectpage-template/actions/workflows/build.yaml/badge.svg)](https://github.com/omron-sinicx/projectpage-template/actions/workflows/build.yaml) [![build](https://github.com/omron-sinicx/projectpage-template/actions/workflows/lint.yaml/badge.svg)](https://github.com/omron-sinicx/projectpage-template/actions/workflows/lint.yaml)
 - A project page template using [React](https://ja.reactjs.org/) + [UIKit](https://getuikit.com/)
