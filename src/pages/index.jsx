@@ -5,9 +5,7 @@ import { Helmet } from 'react-helmet';
 import Header from '../components/header.jsx';
 import Overview from '../components/overview.jsx';
 import Video from '../components/video.jsx';
-import Player from '../components/react-player.jsx';
-import Method from '../components/method.jsx';
-import Result from '../components/results.jsx';
+import Body from '../components/body.jsx';
 import Contact from '../components/contact.jsx';
 import Footer from '../components/footer.jsx';
 import Citation from '../components/citation.jsx';
@@ -63,13 +61,19 @@ class Template extends React.Component {
           theme={data.theme}
         />
         <div className="uk-container uk-container-small">
-          <Overview overview={data.overview} />
+          <Overview
+            overview={data.overview}
+            teaser={data.teaser}
+            description={data.description}
+          />
           <Video video={data.resources.video} />
           <SpeakerDeck dataId={data.speakerdeck} />
-          <Method method={data.method} />
-          <Player demo={data.demo} />
-          <Result results={data.results} />
-          <Contact authors={data.authors} contact_ids={data.contact_ids} />
+          <Body method={data.body} />
+          <Contact
+            authors={data.authors}
+            contact_ids={data.contact_ids}
+            resources={data.resources}
+          />
           <Citation bibtex={data.bibtex} />
         </div>
         <Footer />

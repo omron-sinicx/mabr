@@ -1,4 +1,5 @@
 import data from '../../template.yaml';
+import 'katex/dist/katex.min.css';
 
 import UIkit from 'uikit';
 import Icons from 'uikit/dist/js/uikit-icons';
