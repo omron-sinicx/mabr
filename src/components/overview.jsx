@@ -18,11 +18,11 @@ export default class Overview extends React.Component {
           alt=""
         />
         {this.props.description && (
-          <p className="uk-text-primary uk-text-center uk-margin-bottom">
+          <p className="uk-text-secondary uk-text-center uk-margin-bottom">
             <span className="uk-label uk-label-primary uk-text-center uk-text-bold">
               TL;DR
             </span>{' '}
-            {this.props.description}
+            <span className="uk-text-secondary">{this.props.description}</span>
           </p>
         )}
         <h3 className="uk-heading-line uk-text-center">OVERVIEW</h3>

@@ -26,7 +26,7 @@ class ResourceBtn extends React.Component {
       <>
         <a className={aClass} href={this.props.url} target="_blank">
           <FaIcon size="2em" />
-          <span className="uk-margin-small-left uk-margin-small-right uk-text-primary uk-text-bolder">
+          <span className="uk-margin-small-left uk-margin-small-right uk-text-emphasis uk-text-bolder">
             {this.props.title}
           </span>
         </a>
@@ -46,16 +46,6 @@ export default class Header extends React.Component {
     } uk-text-primary`;
     return (
       <>
-        <div className="uk-navbar uk-navbar-container">
-          <div className="uk-navbar-center">
-            <a href="https://www.omron.com/sinicx" target="_blank">
-              <CorporateLogo
-                size="sm"
-                inverted={this.props.theme == 'dark' ? true : false}
-              />
-            </a>
-          </div>
-        </div>
         <div className="uk-cover-container uk-background-secondary">
           <div className="uk-container uk-container-small uk-section">
             <div className="uk-text-center uk-text-bold">
@@ -69,6 +59,14 @@ export default class Header extends React.Component {
               affiliations={this.props.affiliations}
               meta={this.props.meta}
             />
+            <div className="uk-text-center uk-margin-top">
+              <a href="https://www.omron.com/sinicx" target="_blank">
+                <CorporateLogo
+                  size="lg"
+                  inverted={this.props.theme == 'dark' ? true : false}
+                />
+              </a>
+            </div>
             <div className="uk-flex uk-flex-center uk-margin-top">
               {Object.keys(this.props.resources).map((key) => (
                 <ResourceBtn

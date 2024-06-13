@@ -10,7 +10,6 @@
 
 $global-font-family: 'Montserrat', 'Open Sans', 'Raleway', 'Ubuntu';
 $base-heading-font-family: 'Mattone';
-// $global-link-color: #DA7D02;
 
 // code block
 $base-pre-background: #f9f9f9;
@@ -30,10 +29,17 @@ $tooltip-border-radius: 5px;
 // $global-medium-font-size: clamp(15px,1vw,18px); // comment-font-size
 
 $omron-color: #1c5eb8;
-$sinicx-color: #f15a24;
+$accent-color: #e55927;
 
+$global-link-color: $accent-color;
 $theme-color: #282c34;
-$theme-color-fg: #eee;
+$theme-color-fg: #fff;
+$global-color: #000;
+$global-emphasis-color: $theme-color-fg;
+$base-heading-color: $global-color;
+$text-primary-color: $theme-color-fg;
+$text-secondary-color: $global-color;
+
 $button-text-color: $theme-color-fg;
 $button-text-hover-color: #fff;
 
@@ -42,7 +48,7 @@ $button-text-hover-color: #fff;
 
 $background-secondary-background: $theme-color;
 $button-primary-background: $theme-color;
-$global-primary-background: $sinicx-color;
+$global-primary-background: $accent-color;
 $text-primary-color: $theme-color-fg;
 
 // sinicx logo

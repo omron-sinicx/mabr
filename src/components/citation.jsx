@@ -18,7 +18,7 @@ const CopyButton = ({ text }) => {
   };
   return (
     <button
-      className="tooltip uk-align-right"
+      className="tooltip uk-align-right uk-text-emphasis"
       onClick={copyToClipboard}
       style={{
         border: 'none',
