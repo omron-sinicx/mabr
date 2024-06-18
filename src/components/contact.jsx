@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { FaAddressCard, FaEnvelope, FaGithub } from 'react-icons/fa6';
+import { FaGithub } from 'react-icons/fa6';
+import { MdAlternateEmail, MdContactMail } from 'react-icons/md';
 
 class ContactCard extends React.Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class ContactCard extends React.Component {
     return (
       <div className="uk-width-1-2@s uk-flex">
         <div className="uk-width-auto uk-margin-right">
-          <FaAddressCard size="3em" />
+          <MdContactMail size="3em" />
         </div>
         <div className="uk-width-expand">
           <span className="uk-comment-title uk-margin-remove">
@@ -46,7 +47,7 @@ class OmronContactCard extends React.Component {
     return (
       <div className="uk-width-1-2@s uk-flex">
         <div className="uk-width-auto uk-margin-right">
-          <FaEnvelope size="3em" />
+          <MdAlternateEmail size="3em" />
         </div>
         <div className="uk-width-expand">
           <span className="uk-comment-title uk-margin-remove">
@@ -103,7 +104,7 @@ export default class Contact extends React.Component {
   render() {
     return (
       <div className="uk-section">
-        <h3 className="uk-heading-line uk-text-center">CONTACT</h3>
+        <h2 className="uk-heading-line uk-text-center">Contact</h2>
         <div className="uk-grid-medium" data-uk-grid>
           {this.props.contact_ids.map((cid) => {
             if (cid == 'omron') {

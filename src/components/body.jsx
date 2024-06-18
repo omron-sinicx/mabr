@@ -18,7 +18,9 @@ class Content extends React.Component {
   render() {
     if (this.props.title)
       return (
-        <h3 className="uk-heading-line uk-text-center">{this.props.title}</h3>
+        <h3 className="uk-margin-top uk-heading-line uk-text-center">
+          {this.props.title}
+        </h3>
       );
     if (this.props.text)
       return (
