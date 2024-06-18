@@ -6,7 +6,7 @@ conference: IJCAI2020
 resources:
   paper: https://arxiv.org/abs/1909.13111
   code: https://github.com/omron-sinicx/multipolar
-  video: https://www.youtube.com/embed/adUnIj83RtU
+  video: https://www.youtube.com/embed/W8nBFKDxsb0
   blog: https://medium.com/sinicx/multipolar-multi-source-policy-aggregation-for-transfer-reinforcement-learning-between-diverse-bc42a152b0f5
 description: explore a new challenge in transfer RL, where only a set of source policies collected under unknown diverse dynamics is available for learning a target task efficiently.
 image: https://omron-sinicx.github.io/multipolar/assets/teaser.png
@@ -169,7 +169,7 @@ body:
                 31.1 (29.2, 33.0)
               </td>
             </tr>
-            <tr>
+            <tr class="uk-active">
               <td>
                 Neural BF
                 <br />

@@ -16,6 +16,7 @@ export default class Overview extends React.Component {
           src={require('../images/' + this.props.teaser)}
           className="uk-align-center uk-responsive-width"
           alt=""
+          width="750px"
         />
         {this.props.description && (
           <p className="uk-text-secondary uk-text-center uk-margin-bottom">
