@@ -6,6 +6,7 @@ import { FaGithub, FaYoutube, FaMedium } from 'react-icons/fa6';
 import { FaFilePdf } from 'react-icons/fa';
 import { SiArxiv } from 'react-icons/si';
 import { Icon } from '@iconify/react';
+import bgImageUrl from '../media/sinic_curve.png';
 
 const HuggingFace = ({ size }) => (
   <Icon icon="logos:hugging-face-icon" style={{ fontSize: size }} />
@@ -68,40 +69,52 @@ export default class Header extends React.Component {
     const titleClass = `uk-${
       this.props.title.length > 15 ? 'h2' : 'h1'
     } uk-text-primary`;
+    const backgroundStyle =
+      window.innerWidth > 600
+        ? {
+            backgroundImage: `url(${bgImageUrl})`,
+            backgroundSize: 'contain',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'right',
+            margin: '20px 10px 20px 0px',
+          }
+        : {};
     return (
       <>
         <div className="uk-cover-container uk-background-secondary">
-          <div className="uk-container uk-container-small uk-section">
-            <div className="uk-text-center uk-text-bold">
-              <p className={titleClass}>{this.props.title}</p>
-              <span
-                className="uk-label uk-label-primary uk-text-center uk-margin-small-bottom"
-                style={{ fontFamily: 'Poppins' }}
-              >
-                {this.props.conference}
-              </span>
-            </div>
-            <Authors
-              authors={this.props.authors}
-              affiliations={this.props.affiliations}
-              meta={this.props.meta}
-            />
-            <div className="uk-text-center uk-margin-top">
-              <a href="https://www.omron.com/sinicx" target="_blank">
-                <CorporateLogo
-                  size="lg"
-                  inverted={this.props.theme == 'dark' ? true : false}
-                />
-              </a>
-            </div>
-            <div className="uk-flex uk-flex-center uk-margin-top">
-              {Object.keys(this.props.resources).map((key) => (
-                <ResourceBtn
-                  url={this.props.resources[key]}
-                  title={key}
-                  key={'header-' + key}
-                />
-              ))}
+          <div style={backgroundStyle}>
+            <div className="uk-container uk-container-small uk-section">
+              <div className="uk-text-center uk-text-bold">
+                <p className={titleClass}>{this.props.title}</p>
+                <span
+                  className="uk-label uk-label-primary uk-text-center uk-margin-small-bottom"
+                  style={{ fontFamily: 'Poppins' }}
+                >
+                  {this.props.conference}
+                </span>
+              </div>
+              <Authors
+                authors={this.props.authors}
+                affiliations={this.props.affiliations}
+                meta={this.props.meta}
+              />
+              <div className="uk-text-center uk-margin-top">
+                <a href="https://www.omron.com/sinicx" target="_blank">
+                  <CorporateLogo
+                    size="lg"
+                    inverted={this.props.theme == 'dark' ? true : false}
+                  />
+                </a>
+              </div>
+              <div className="uk-flex uk-flex-center uk-margin-top">
+                {Object.keys(this.props.resources).map((key) => (
+                  <ResourceBtn
+                    url={this.props.resources[key]}
+                    title={key}
+                    key={'header-' + key}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
