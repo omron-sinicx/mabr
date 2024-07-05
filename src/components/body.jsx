@@ -18,9 +18,9 @@ class Content extends React.Component {
   render() {
     if (this.props.title)
       return (
-        <h3 className="uk-margin-top uk-heading-line uk-text-center">
+        <h2 className="uk-margin-top uk-heading-line uk-text-center">
           {this.props.title}
-        </h3>
+        </h2>
       );
     if (this.props.text)
       return (
@@ -31,7 +31,7 @@ class Content extends React.Component {
     if (this.props.image)
       return (
         <img
-          src={require('../images/' + this.props.image)}
+          src={require('../media/' + this.props.image)}
           className="uk-align-center uk-responsive-width"
           alt=""
         />

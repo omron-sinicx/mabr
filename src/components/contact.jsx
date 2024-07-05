@@ -87,9 +87,11 @@ class GithubContactCard extends React.Component {
             </a>
           </span>
           <ul className="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
-            <a href={this.props.repo} target="_blank">
-              <li>GitHub.com</li>
-            </a>
+            <li>
+              <a href={this.props.repo} target="_blank">
+                GitHub.com
+              </a>
+            </li>
           </ul>
         </div>
       </div>

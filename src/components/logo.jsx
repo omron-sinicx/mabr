@@ -1,5 +1,5 @@
 import React from 'react';
-import logoSvg from '../images/sinicx.svg';
+import logoSvg from '../media/sinicx.svg';
 
 export default class CorporateLogo extends React.Component {
   constructor(props) {

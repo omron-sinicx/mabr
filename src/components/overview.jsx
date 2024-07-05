@@ -13,14 +13,16 @@ export default class Overview extends React.Component {
     return (
       <div className="uk-section">
         <img
-          src={require('../images/' + this.props.teaser)}
+          src={require('../media/' + this.props.teaser)}
           className="uk-align-center uk-responsive-width"
           alt=""
-          width="750px"
         />
         {this.props.description && (
           <p className="uk-text-secondary uk-text-center uk-margin-bottom">
-            <span className="uk-label uk-label-primary uk-text-center uk-text-bold">
+            <span
+              className="uk-label uk-label-primary uk-text-center uk-text-bold"
+              style={{ fontFamily: 'Poppins' }}
+            >
               TL;DR
             </span>{' '}
             <span className="uk-text-secondary">{this.props.description}</span>

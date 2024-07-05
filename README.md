@@ -76,10 +76,9 @@ src/
 │   └── video.jsx
 ├── html
 │   └── index.html
-├── images               # images to be relocated to assets/ by file-loader
+├── media # media files to be relocated to assets/ by file-loader
 │   ├── method.png
-│   ├── result1.png
-│   ├── result2.png
+│   ├── demo.mp4
 │   └── teaser.png
 ├── videos
 │   └── result1.mp4

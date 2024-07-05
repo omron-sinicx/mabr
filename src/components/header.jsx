@@ -4,30 +4,54 @@ import Authors from '../components/authors.jsx';
 import CorporateLogo from '../components/logo.jsx';
 import { FaGithub, FaYoutube, FaMedium } from 'react-icons/fa6';
 import { FaFilePdf } from 'react-icons/fa';
+import { SiArxiv } from 'react-icons/si';
+import { Icon } from '@iconify/react';
+
+const HuggingFace = ({ size }) => (
+  <Icon icon="logos:hugging-face-icon" style={{ fontSize: size }} />
+);
 
 class ResourceBtn extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      isMobile: window.innerWidth < 600,
+    };
     this.icons = {
       paper: FaFilePdf,
+      arxiv: SiArxiv,
       code: FaGithub,
       video: FaYoutube,
       blog: FaMedium,
+      huggingface: HuggingFace,
     };
+    this.handleResize = this.handleResize.bind(this);
+  }
+  componentDidMount() {
+    window.addEventListener('resize', this.handleResize);
+    this.handleResize();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize);
+  }
+  handleResize() {
+    this.setState({ isMobile: window.innerWidth < 600 });
   }
   render() {
     if (!this.props.url) return null;
-    const aClass =
-      this.props.title == 'paper'
-        ? `uk-button uk-button-text`
-        : `uk-button uk-button-text uk-margin-medium-left`; // FIXME
+    const aClass = `uk-button uk-button-text uk-padding-remove ${this.props.rid === 0 ? 'uk-first-column' : 'uk-margin-medium-left@s uk-margin-small-left'}`;
+    const sClass = 'uk-margin-small-left uk-margin-small-right uk-text-bold';
     const FaIcon = this.icons[this.props.title];
+    const iTitle =
+      this.props.title == 'huggingface' && this.state.isMobile
+        ? ' hf '
+        : this.props.title;
     return (
       <>
         <a className={aClass} href={this.props.url} target="_blank">
           <FaIcon size="2em" />
-          <span className="uk-margin-small-left uk-margin-small-right uk-text-emphasis uk-text-bolder">
-            {this.props.title}
+          <span className={sClass} style={{ fontFamily: 'Poppins' }}>
+            {iTitle}
           </span>
         </a>
       </>
@@ -50,7 +74,10 @@ export default class Header extends React.Component {
           <div className="uk-container uk-container-small uk-section">
             <div className="uk-text-center uk-text-bold">
               <p className={titleClass}>{this.props.title}</p>
-              <span className="uk-label uk-label-primary uk-text-center uk-margin-bottom">
+              <span
+                className="uk-label uk-label-primary uk-text-center uk-margin-small-bottom"
+                style={{ fontFamily: 'Poppins' }}
+              >
                 {this.props.conference}
               </span>
             </div>
