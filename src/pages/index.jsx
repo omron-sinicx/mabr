@@ -10,6 +10,7 @@ import Contact from '../components/contact.jsx';
 import Footer from '../components/footer.jsx';
 import Citation from '../components/citation.jsx';
 import SpeakerDeck from '../components/speakerdeck.jsx';
+import Projects from '../components/projects.jsx';
 import data from '../../template.yaml';
 
 class Template extends React.Component {
@@ -76,6 +77,7 @@ class Template extends React.Component {
             resources={data.resources}
           />
           <Citation bibtex={data.bibtex} />
+          <Projects projects={data.projects} />
         </div>
         <Footer />
       </div>
