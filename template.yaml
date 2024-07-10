@@ -228,3 +228,4 @@ projects:
     img: 'https://github.com/omron-sinicx/swarm-body/raw/main/images/teaser.jpg'
     description: |
       "maru" (= miniature assemblage adaptive robot unit) is a custom-made, miniature-sized, two-wheeled robot designed specifically for tabletop swarm robotics research.
+    url: https://github.com/omron-sinicx/swarm-body

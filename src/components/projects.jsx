@@ -1,9 +1,11 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-const ProjectCard = ({ title, img, description, journal }) => (
-  <div
-    className="uk-card uk-card-default uk-grid-collapse uk-margin"
+const ProjectCard = ({ title, img, description, journal, url }) => (
+  <a
+    href={url}
+    target="_blank"
+    className="uk-card uk-card-default uk-grid-collapse uk-margin uk-link-toggle"
     data-uk-grid
   >
     <div className="uk-card-media-left uk-cover-container uk-width-1-3@s">
@@ -17,7 +19,7 @@ const ProjectCard = ({ title, img, description, journal }) => (
         <p>{description}</p>
       </div>
     </div>
-  </div>
+  </a>
 );
 
 export default class Projects extends React.Component {
@@ -36,6 +38,7 @@ export default class Projects extends React.Component {
               img={project.img}
               description={project.description}
               journal={project.journal}
+              url={project.url}
             />
           );
         })}
