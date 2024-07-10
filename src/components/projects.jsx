@@ -1,7 +1,5 @@
 import React from 'react';
 import { render } from 'react-dom';
-import bgImageL from '../media/sinic_curve.png';
-import bgImageR from '../media/sinic_curve_r.png';
 
 const ProjectCard = ({ title, img, description, journal }) => (
   <div
