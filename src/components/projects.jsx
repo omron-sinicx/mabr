@@ -26,16 +26,7 @@ export default class Projects extends React.Component {
   }
 
   render() {
-    let backgroundStyle =
-      window.innerWidth > 600
-        ? {
-            backgroundColor: '#e0e0e0',
-            backgroundSize: 'contain',
-            backgroundRepeat: 'no-repeat',
-            padding: '10px 5px 10px 0px',
-          }
-        : {};
-    return (
+    return this.props.projects ? (
       <div className="uk-section">
         <h2 className="uk-heading-line uk-text-center">Relevant Projects</h2>
         {this.props.projects.map((project, idx) => {
@@ -49,6 +40,6 @@ export default class Projects extends React.Component {
           );
         })}
       </div>
-    );
+    ) : null;
   }
 }
