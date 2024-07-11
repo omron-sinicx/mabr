@@ -70,7 +70,7 @@ class Template extends React.Component {
           />
           <Video video={data.resources.video} />
           <SpeakerDeck dataId={data.speakerdeck} />
-          <Body method={data.body} />
+          <Body body={data.body} />
           <Contact
             authors={data.authors}
             contact_ids={data.contact_ids}
