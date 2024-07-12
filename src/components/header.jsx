@@ -62,6 +62,20 @@ class ResourceBtn extends React.Component {
 export default class Header extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      isMobile: window.innerWidth < 1000,
+    };
+    this.handleResize = this.handleResize.bind(this);
+  }
+  componentDidMount() {
+    window.addEventListener('resize', this.handleResize);
+    this.handleResize();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize);
+  }
+  handleResize() {
+    this.setState({ isMobile: window.innerWidth < 960 });
   }
 
   render() {
@@ -77,16 +91,15 @@ export default class Header extends React.Component {
           backgroundColor: '#030706',
         }
       : null;
-    const backgroundStyle =
-      window.innerWidth > 600
-        ? {
-            backgroundImage: `url(assets/${this.props.header.bg_curve})`,
-            backgroundSize: 'contain',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'right',
-            margin: '20px 10px 20px 0px',
-          }
-        : {};
+    const backgroundStyle = this.state.isMobile
+      ? null
+      : {
+          backgroundImage: `url(assets/${this.props.header.bg_curve})`,
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'right',
+          margin: '40px 20px 40px 0px',
+        };
     return (
       <>
         <div
