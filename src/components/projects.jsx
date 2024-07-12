@@ -15,7 +15,7 @@ const ProjectCard = ({ title, img, description, journal, url }) => (
     <div className="uk-width-2-3@s">
       <div className="uk-card-body">
         <div className="uk-card-badge uk-label">{journal}</div>
-        <h4 className="uk-card-title">{title}</h4>
+        <h6>{title}</h6>
         <p>{description}</p>
       </div>
     </div>

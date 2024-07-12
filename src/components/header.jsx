@@ -6,7 +6,6 @@ import { FaGithub, FaYoutube, FaMedium } from 'react-icons/fa6';
 import { FaFilePdf } from 'react-icons/fa';
 import { SiArxiv } from 'react-icons/si';
 import { Icon } from '@iconify/react';
-import bgImageUrl from '../media/sinic_curve.png';
 
 const HuggingFace = ({ size }) => (
   <Icon icon="logos:hugging-face-icon" style={{ fontSize: size }} />
@@ -69,10 +68,19 @@ export default class Header extends React.Component {
     const titleClass = `uk-${
       this.props.title.length > 15 ? 'h2' : 'h1'
     } uk-text-primary`;
+    const baseStyle = this.props.header?.bg_image
+      ? {
+          backgroundImage: `url(${this.props.header.bg_image})`,
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'left',
+          backgroundColor: '#030706',
+        }
+      : null;
     const backgroundStyle =
       window.innerWidth > 600
         ? {
-            backgroundImage: `url(${bgImageUrl})`,
+            backgroundImage: `url(assets/${this.props.header.bg_curve})`,
             backgroundSize: 'contain',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'right',
@@ -81,7 +89,10 @@ export default class Header extends React.Component {
         : {};
     return (
       <>
-        <div className="uk-cover-container uk-background-secondary">
+        <div
+          className="uk-cover-container uk-background-secondary"
+          style={baseStyle}
+        >
           <div style={backgroundStyle}>
             <div className="uk-container uk-container-small uk-section">
               <div className="uk-text-center uk-text-bold">

@@ -56,6 +56,10 @@ bibtex: >
     booktitle={International Joint Conference on Artificial Intelligence (IJCAI)},
     year={2020}
   }
+header:
+  bg_curve:
+    sinic_curve.png
+    #  bg_image: https://github.com/omron-sinicx/swarm-body/raw/main/images/teaser.jpg
 
 teaser: teaser.png
 overview: |
@@ -225,6 +229,12 @@ body:
 projects:
   - title: 'maru: a miniature-sized wheeled robot for swarm robotics research'
     journal: "CHI'24"
+    img: 'https://github.com/omron-sinicx/swarm-body/raw/main/images/teaser.jpg'
+    description: |
+      "maru" (= miniature assemblage adaptive robot unit) is a custom-made, miniature-sized, two-wheeled robot designed specifically for tabletop swarm robotics research.
+    url: https://github.com/omron-sinicx/swarm-body
+  - title: 'Language-Guided Pattern Formation for Swarm Robotics with Multi-Agent Reinforcement Learning'
+    journal: "IROS'24"
     img: 'https://github.com/omron-sinicx/swarm-body/raw/main/images/teaser.jpg'
     description: |
       "maru" (= miniature assemblage adaptive robot unit) is a custom-made, miniature-sized, two-wheeled robot designed specifically for tabletop swarm robotics research.
