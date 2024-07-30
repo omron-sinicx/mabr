@@ -98,7 +98,7 @@ export default class Header extends React.Component {
           backgroundSize: 'contain',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'right',
-          margin: '40px 20px 40px 0px',
+          margin: '20px 10px 20px 0px',
         };
     return (
       <>

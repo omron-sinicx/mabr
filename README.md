@@ -153,11 +153,12 @@ bibtex: >
   }
 ```
 
-## Release your project page automatically by GitHub Actions
-- **We have already created organization token for omron-sinicx** https://github.com/organizations/omron-sinicx/settings/secrets/actions
-  - **Just in case the token above is unavailable:** generate personal access token by yourself
-    - see https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-set-personal-access-token-personal_token
-    - register the token as `PERSONAL_TOKEN` at `https://github.com/path/to/your/repo/settings/secrets/actions`
+### Release your project page automatically bt GitHub Actions
+- Navigate to `https://github.com/{your-github-repo-path}/settings/pages`
+- Select `GitHub Actions` at **Build and Deployment > Source**
+- `$ git remote add origin {your-github-repo-path}`
+- `$ git push origin project-page`
+- See also: [GitHub Documentation](https://docs.github.com/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) and [actions/deploy-pages](https://github.com/actions/deploy-pages)
 
 ### Release project-page
 - `$ git remote add github {your-github-repo-path}`

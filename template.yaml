@@ -4,15 +4,15 @@ twitter: '@omron_sinicx'
 title: 'Multi-Agent Behavior Retrieval: Retrieval-Augmented Policy Training for Cooperative Manipulation by Mobile Robots'
 conference: IROS2024
 resources:
-  paper: https://arxiv.org/abs/1909.13111
-  code: https://github.com/omron-sinicx/multipolar
-  video: https://www.youtube.com/embed/W8nBFKDxsb0
+  paper: https://arxiv.org/abs/2312.02008
+  code: # TBD
+  video: # TBD
   blog: https://medium.com/sinicx/multipolar-multi-source-policy-aggregation-for-transfer-reinforcement-learning-between-diverse-bc42a152b0f5
-  huggingface: https://huggingface.co/
-description: explore a new challenge in transfer RL, where only a set of source policies collected under unknown diverse dynamics is available for learning a target task efficiently.
-image: https://omron-sinicx.github.io/multipolar/assets/teaser.png
-url: https://omron-sinicx.github.io/multipolar
-speakerdeck: b7a0614c24014dcbbb121fbb9ed234cd
+  huggingface: # NA
+description: introduces the Multi-Agent Coordination Skill Database, allowing multiple mobile robots to efficiently use past memories to adapt to new tasks.
+image: https://omron-sinicx.github.io/mabr/assets/teaser.png
+url: https://omron-sinicx.github.io/mabr
+speakerdeck: # TBD
 authors:
   - name: So Kuroki
     affiliation: [1, 2]
@@ -25,36 +25,20 @@ authors:
   - name: Tadashi Kozuno
     affiliation: [1]
     position: Senior Researcher
-    url: https://sites.google.com/view/masashihamaya/home
-    #  - name: Mai Nishimura
-    #    affiliation: [1]
-    #    url: https://denkiwakame.github.io
-    #  - name: Asako Kanezaki
-    #    affiliation: [2]
-    #    url: https://kanezaki.github.io/
-contact_ids: ['github', 'omron', 2] #=> github issues, contact@sinicx.com, 2nd author
+    url: https://tadashik.github.io/
+contact_ids: ['omron', 2] #=> github issues, contact@sinicx.com, 2nd author
 affiliations:
   - OMRON SINIC X Corporation
   - Technical University of Munich
 meta:
   - '* work done as an intern at OMRON SINIC X.'
 bibtex: >
-  # arXiv version
-
-  @article{barekatain2019multipolar,
-    title={MULTIPOLAR: Multi-Source Policy Aggregation for Transfer Reinforcement Learning between Diverse Environmental Dynamics},
-    author={Barekatain, Mohammadamin and Yonetani, Ryo and Hamaya, Masashi},
-    journal={arXiv preprint arXiv:1909.13111},
-    year={2019}
-  }
-
-  # IJCAI version
-
-  @inproceedings{barekatain2020multipolar,
-    title={MULTIPOLAR: Multi-Source Policy Aggregation for Transfer Reinforcement Learning between Diverse Environmental Dynamics},
-    author={Barekatain, Mohammadamin and Yonetani, Ryo and Hamaya, Masashi},
-    booktitle={International Joint Conference on Artificial Intelligence (IJCAI)},
-    year={2020}
+  @inproceedings{kuroki2024iros,
+    title={Multi-Agent Behavior Retrieval: Retrieval-Augmented Policy Training for Cooperative Push Manipulation by Mobile Robots},
+    author={So Kuroki, Mai Nishiura, Tadashi Kozuno},
+    booktitle={2024 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+    organization={IEEE}
+    year={2024}
   }
 header:
   bg_curve:
@@ -63,169 +47,91 @@ header:
 
 teaser: teaser.png
 overview: |
-  This is a versatile template designed to satisfy your research project page needs, all while harnessing the power of **UIKit** and **React**. Built on the foundations of simplicity and flexibility, this template allows you to focus on expressing your ideas without the hassle of directly handling CSS—thanks to customizable SASS variables.
-  With markdown as your canvas and $\KaTeX$ for precise equations, crafting clear and engaging project page becomes effortless. Whether you're unraveling complex theories or presenting your findings, this template aims to support your scholarly endeavors with grace and ease.
-  *Need to edit HTML directly?* Fear not! In addition to markdown, you can also directly write HTML with ease. Feel empowered to craft your content exactly as you envision it, whether through markdown's simplicity or the precision of HTML.
+  Due to the complex interactions between agents, learning multi-agent control policy often requires a prohibited amount of data.
+  This paper aims to enable multi-agent systems to effectively utilize past memories to adapt to novel collaborative tasks in a data-efficient fashion.
+  We propose the *Multi-Agent Coordination Skill Database*, a repository for storing a collection of coordinated behaviors associated with key vectors distinctive to them. Our Transformer-based skill encoder effectively captures spatio-temporal interactions that contribute to coordination and provides a unique skill representation for each coordinated behavior. By leveraging only a small number of demonstrations of the target task, the database enables us to train the policy using a dataset augmented with the retrieved demonstrations. Experimental evaluations demonstrate that our method achieves a significantly higher success rate in push manipulation tasks compared with baseline methods like few-shot imitation learning. Furthermore, we validate the effectiveness of our retrieve-and-learn framework in a real environment using a team of wheeled robots.
 
 body:
-  - title: Media examples
+  - title: Multi-Agent Behavior Retrieval
     text: |
-      You can access media files in `src/media/` using `assets/` paths
+      ### Motivation
+      When making decisions or engaging in collaborative tasks such as moving heavy loads or playing team sports, we effectively tap into past experiences by retrieving relevant memories. By drawing on the wealth of lessons learned from past successes and failures, we gain valuable insights that enhance our coordination ability to work together more efficiently even in unknown situations.
+      In this work, we focus on endowing a team of mobile robots with such intelligent memory storage, which we refer to as a *MultiAgent Coordination Skill Database*. The database, which serves as a repository of coordination skills, efficiently stores collaborative demonstrations in diverse settings. Collecting a large number of multi-robot demonstrations for every target configuration is extremely costly and impractical in real-world scenarios. In contrast, by providing only a few demonstrations of the target task as queries, our database enables us to retrieve and learn from the vast repository of coordination skills that are relevant to the target task.
+
+      ### Retrieve-and-Learn Framework
+      Given a large task-agnostic prior dataset $D_{\text{prior}}$ and a few demonstrations $D_{\text{target}}$ collected from the target task, our main objective is to retrieve coordination skills from $D_{\text{prior}}$ that facilitate downstream policy learning for the target task.
 
       <img src="assets/method.png" alt="" />
 
-      See also [UIKit Video Components Documentation](https://getuikit.com/docs/video) and [Grid system](https://getuikit.com/docs/grid)
-      <div class="uk-child-width-1-2@m" uk-grid>
-        <div>
-          <video
-            src="assets/demo.mp4"
-            loop
-            muted
-            uk-video="autoplay:inview"
-            />
+      Our retrieve-and-learn framework consists of three primary components: (i) constructing the Multi-Agent Coordination
+      Skill Database on the basis of the prior experiences, (ii) retrieving demonstrations using a few target demonstrations as queries,
+      and (iii) learning the multi-agent control policy using the retrieved data and target data.
+
+      ### Multi-Agent Coordination Skill Encoder
+      We introduce a Transformer-based coordination skill encoder, which *learns to capture interactions among agents as well as interactions between agents and a manipulation object*.
+      The design of the coordination skill encoder is guided
+      by the following key insights.
+      - The coordination occurs in both spatial and temporal domains. For example, if one agent maneuvers to the right side to contact an object, the other one must contact the left side of the object while predicting and interpreting the intention of the first agent.
+      - The skill representation not only encompasses past trajectories but also predicts future trajectories. This enables
+      the coordination skill to guide downstream policies, suggesting the appropriate action to take in future timesteps.
+
+      To obtain such predictable skill representation space, we train
+      the Transformer-based skill encoder as a prediction model of
+      the agent’s future trajectories i.e., actions.
+      <div class="uk-child-width-expand@s" uk-grid>
+        <div class="">
+          <img src="assets/skill_encoder.png" />
         </div>
-        <div>
-          <video
-            src="assets/demo.mp4"
-            loop
-            muted
-            uk-video="autoplay:inview"
-            />
+        <div class="">
+          In our network, the past context encoder is comprised of stacked multi-head self-attention layers that learn to attend to past trajectories across spatial and temporal domains. The future trajectory decoder is composed of multi-head self-attention layers and subsequent stacked multi-head cross-attention layers that integrate the past trajectory information and input tokens.
         </div>
       </div>
-  - title: Markdown examples
+      Given past trajectory sequences with a temporal time window H, X =
+  - title: Results
     text: |
-      Here's our demo text showcasing the power of markdown and KaTeX integration!
-      Markdown allows you to easily format text using simple syntax.
-      - **bold**
-      - *italic*
-      - `inline code`.
-
-      You can also create headings of various levels:
-      # Heading Level 1
-      ## Heading Level 2
-      ### Heading Level 3
-      #### Heading Level 4
-      Markdown allows you to create tables like the following:
-      #### Motion Planning (MP) Dataset
-      markdown version
-      |Method|Opt|Exp|Hmean|
-      |--|--|--|--|
-      |BF| 65.8 (63.8, 68.0)| 44.1 (42.8, 45.5) | 44.8 (43.4, 46.3)|
-      |WA*| 68.4 (66.5, 70.4)| 35.8 (34.5, 37.1) | 40.4 (39.0, 41.8)|
-      |**Neural A*** | **87.7 (86.6, 88.9)**| 40.1 (38.9, 41.3) | 52.0 (50.7, 53.3)|
-
-      Of course, you can also directly write tables in HTML if needed. For more details, refer to the [UIKit Table documentation](https://getuikit.com/docs/table).
-      <h4>Motion Planning (MP) Dataset</h4>
-      <p>HTML version</p>
-      <div class="uk-overflow-auto">
-        <table class="uk-table uk-table-small uk-text-small uk-table-divider">
-          <thead>
-            <tr>
-              <th>Method</th>
-              <th>Opt</th>
-              <th>Exp</th>
-              <th>Hmean</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                BF
-                <br />
-                WA*
-              </td>
-              <td>
-                65.8 (63.8, 68.0)
-                <br />
-                68.4 (66.5, 70.4)
-              </td>
-              <td>
-                44.1 (42.8, 45.5)
-                <br />
-                35.8 (34.5, 37.1)
-              </td>
-              <td>
-                44.8 (43.4, 46.3)
-                <br />
-                40.4 (39.0, 41.8)
-              </td>
-            </tr>
-            <tr>
-              <td>
-                SAIL
-                <br />
-                SAIL-SL
-                <br />
-                BB-A*
-              </td>
-              <td>
-                5.7 (4.6, 6.8)
-                <br />
-                3.1 (2.3, 3.8)
-                <br />
-                31.2 (28.8, 33.5)
-              </td>
-              <td>
-                58.0 (56.1, 60.0)
-                <br />
-                57.6 (55.7, 59.6)
-                <br />
-                52.0 (50.2, 53.9)
-              </td>
-              <td>
-                7.7 (6.4, 9.0)
-                <br />
-                4.4 (3.5, 5.3)
-                <br />
-                31.1 (29.2, 33.0)
-              </td>
-            </tr>
-            <tr class="uk-active">
-              <td>
-                Neural BF
-                <br />
-                <b>Neural A*</b>
-              </td>
-              <td>
-                75.5 (73.8, 77.1)
-                <br />
-                <b>87.7 (86.6, 88.9)</b>
-              </td>
-              <td>
-                45.9 (44.6, 47.2)
-                <br />
-                40.1 (38.9, 41.3)
-              </td>
-              <td>
-                52.0 (50.7, 53.4)
-                <br />
-                52.0 (50.7, 53.3)
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      ### Real-robot Experiments
+      To validate the efficacy of our method in the real
+      world, we use demonstrations of real wheeled robots for
+      querying the prior dataset $D_{\text{prior}}$ constructed in simulated
+      environments. We then train the policy using a few
+      real-robot data augmented with the retrieved simulation
+      demonstrations.
+      <div class="uk-child-width-expand@s" uk-grid>
+        <div class="">
+          <img src="assets/exp_setting.png" alt="setting" />
+        </div>
+        <div class="">
+          We employ our custom-designed swarm robot platform, <a href="https://github.com/omron-sinicx/swarm-body" class="uk-text-bold" target="_blank">``maru''</a> , where the wheeled
+          microrobots communicate with the host computer using 2.4
+          GHz wireless communication. The positions of all robots
+          and an object are tracked in real time by a high-speed digital
+          light processing (DLP) structured light projector system.
+          We can control the positions of the robots by sending 2D
+          coordinates of their future locations from the host compute
+        </div>
       </div>
-      <h3>Selected Path Planning Results</h3>
-      <img
-        src="assets/result1.png"
-        class="uk-align-center uk-responsive-width"
-        alt=""
-      />
-      <h3>Path Planning Results on SSD Dataset</h3>
-      <img
-        src="assets/result2.png"
-        class="uk-align-center uk-responsive-width"
-        alt=""
-      />
-  - title: KaTeX examples
-    text: >
-      $\KaTeX$ enables you to write mathematical expressions beautifully within your text (e.g. $\alpha$, $\beta$, $\gamma$ ).
-      $$ax^2 + bx + c = 0$$
-      $$ \int \oint \sum \prod $$
-      $$ \begin{CD} A @>a>> B \\ @VbVV @AAcA \\ C @= D \end{CD} $$
-      [KaTeX supports a wide range of mathematical symbols and equations](https://katex.org/docs/support_table.html), ensuring your technical content is both clear and visually appealing.
-      With markdown for text formatting and KaTeX for mathematical expressions, our template empowers you to communicate complex ideas effectively. Whether you're writing a scientific paper or a technical blog post, harnessing these tools will elevate your content and engage your readers.
+      <div class="" uk-grid>
+        <div class="uk-width-1-5">
+          <h5 class="uk-text-center">Query</h5>
+          <video src="assets/query.mp4" width="1800" height="1200" loop muted playsinline></video>
+          <span class="uk-text-meta">demonstration</span>
+        </div>
+        <div class="uk-width-2-5">
+          <h5 class="uk-text-center">Proposed (Query+Retrieved)</h5>
+          <video src="assets/ours.mp4" width="1800" height="1200" loop muted playsinline></video>
+        </div>
+        <div class="uk-width-2-5">
+          <h5 class="uk-text-center">Baseline (No Retrieved Data)</h5>
+          <video src="assets/baseline.mp4" width="1800" height="1200" loop muted playsinline></video>
+        </div>
+      </div>
+      We compare our policy trained using the real and retrieved demonstrations and the
+      one trained using only the real-robot demonstrations. The
+      results clearly demonstrate that the policy trained by our
+      retrieve-and-learn framework successfully pushes an object
+      closer to the goal state, while the policy trained using only
+      a few real demonstrations fails to complete the task.
+
 projects:
   - title: 'maru: a miniature-sized wheeled robot for swarm robotics research'
     journal: "CHI'24"
