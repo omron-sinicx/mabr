@@ -54,42 +54,47 @@ overview: |
 body:
   - title: Multi-Agent Behavior Retrieval
     text: |
-      ### Motivation
-      When making decisions or engaging in collaborative tasks such as moving heavy loads or playing team sports, we effectively tap into past experiences by retrieving relevant memories. By drawing on the wealth of lessons learned from past successes and failures, we gain valuable insights that enhance our coordination ability to work together more efficiently even in unknown situations.
-      In this work, we focus on endowing a team of mobile robots with such intelligent memory storage, which we refer to as a *MultiAgent Coordination Skill Database*. The database, which serves as a repository of coordination skills, efficiently stores collaborative demonstrations in diverse settings. Collecting a large number of multi-robot demonstrations for every target configuration is extremely costly and impractical in real-world scenarios. In contrast, by providing only a few demonstrations of the target task as queries, our database enables us to retrieve and learn from the vast repository of coordination skills that are relevant to the target task.
-
       ### Retrieve-and-Learn Framework
-      Given a large task-agnostic prior dataset $D_{\text{prior}}$ and a few demonstrations $D_{\text{target}}$ collected from the target task, our main objective is to retrieve coordination skills from $D_{\text{prior}}$ that facilitate downstream policy learning for the target task.
+      Given a large task-agnostic prior dataset $\mathcal D_{\text{prior}}$ and a few demonstrations $\mathcal D_{\text{target}}$ collected from the target task, our main objective is to retrieve coordination skills from $\mathcal D_{\text{prior}}$ that facilitate downstream policy learning for the target task.
 
       <img src="assets/method.png" alt="" />
 
-      Our retrieve-and-learn framework consists of three primary components: (i) constructing the Multi-Agent Coordination
-      Skill Database on the basis of the prior experiences, (ii) retrieving demonstrations using a few target demonstrations as queries,
-      and (iii) learning the multi-agent control policy using the retrieved data and target data.
+      Our retrieve-and-learn framework consists of three primary components: **(i) Database Construction**, **(ii) Coordination Skill Retrieval**,
+      and **(iii) Retrieval-Augmented Policy Training**.
 
-      ### Multi-Agent Coordination Skill Encoder
-      We introduce a Transformer-based coordination skill encoder, which *learns to capture interactions among agents as well as interactions between agents and a manipulation object*.
-      The design of the coordination skill encoder is guided
-      by the following key insights.
-      - The coordination occurs in both spatial and temporal domains. For example, if one agent maneuvers to the right side to contact an object, the other one must contact the left side of the object while predicting and interpreting the intention of the first agent.
-      - The skill representation not only encompasses past trajectories but also predicts future trajectories. This enables
-      the coordination skill to guide downstream policies, suggesting the appropriate action to take in future timesteps.
+      #### Multi-Agent Coordination Skill Database
 
-      To obtain such predictable skill representation space, we train
-      the Transformer-based skill encoder as a prediction model of
-      the agent’s future trajectories i.e., actions.
+      $\mathcal D_{\text{prior}}$ consists of task-agnostic demonstrations of $N$ mobile agents.
+      To effectively retrieve demonstrations from $D_{\text{prior}}$ that are relevant to $\mathcal D_{\text{target}}$, we seek an abstract representation to measure the similarity between the two multi-agent demonstrations. We refer to this as multi-agent coordination skill representation, a compressed vector representation that is distinctive to the specific coordination behavior.
+      For $N$ agents’ states $\mathbf s_t$ , we aim to learn a skill encoder $\mathcal E$ that maps the state representation of multiple agents into a single representative vector $\mathbf z \in \mathbb R^n$.
+
+      For this, we introduce a Transformer-based coordination skill encoder, which *learns to capture interactions among agents as well as interactions between agents and a manipulation object*.
       <div class="uk-child-width-expand@s" uk-grid>
         <div class="">
           <img src="assets/skill_encoder.png" />
         </div>
         <div class="">
+          To obtain predictable skill representation space, we train
+          the Transformer-based skill encoder as a prediction model of
+          the agent’s future trajectories i.e., actions.
           In our network, the past context encoder is comprised of stacked multi-head self-attention layers that learn to attend to past trajectories across spatial and temporal domains. The future trajectory decoder is composed of multi-head self-attention layers and subsequent stacked multi-head cross-attention layers that integrate the past trajectory information and input tokens.
         </div>
       </div>
-      Given past trajectory sequences with a temporal time window H, X =
+
+      #### Retrieval-Augmented Policy Training
+      We assume that the prior dataset $\mathcal D_{\text{prior}}$ and the target demonstrations $\mathcal D_{\text{target}}$ are composed as follows,
+
+      |||
+      |---|---|
+      | $\mathcal D_{\text{prior}}$ | The prior dataset encompasses a large-scale offline demonstration of diverse cooperative tasks. The dataset also includes noisy or sub-optimal demonstrations to mimic real-world scenarios. All demonstrations are task-agnostic, i.e., each data is stored without any specific task annotations.|
+      | $\mathcal D_{\text{target}}$ | The target dataset encompasses a small amount of expert data, i.e., all data is composed of wellcoordinated demonstrations to complete the target task.|
+
+      Given $\mathcal D_{\text{prior}}$ and $\mathcal D_{\text{target}}$, we aim to retrieve cooperative behaviors similar to those seen in $\mathcal D_{\text{target}}$ in the learned coordination skill space. Once we obtain the retrieved data $\mathcal D_{\text{ret}}$, we train a multi-agent control policy using $\mathcal D_{\text{target}}$ augmented with $\mathcal D_{\text{ret}}$. That is, the training data $\mathcal D_{\text{train}}$ is described as $\mathcal D_{\text{train}} = \mathcal D_{\text{target}} \cup \mathcal D_{\text{ret}}$.
+
   - title: Results
     text: |
       ### Quantitative Results on Simulated Demonstrations
+      We assume $N$ mobile robots are navigated to push an object toward a predefined goal state. To explore various coordination scenarios, we specifically focus on three different values of $N \in \{2, 3, 4\}$. For each of these setups, we collect demonstrations that involve four distinct tasks. These four tasks are carefully designed to encompass two different objects (**stick** or **block**) and manipulation difficulties (**easy** or **hard**).
 
       <div class="uk-overflow-auto">
         <table class="uk-table uk-table-small uk-text-small uk-table-divider">
@@ -136,27 +141,37 @@ body:
         </table>
       </div>
 
-      ### Real-robot Demonstration
+      |baselines||
+      |--|--|
+      | TRAJECTORY MATCHING | We utilize a standard trajectory matching as a baseline to evaluate our retrieval method on the basis of multi-agent skill representation. By calculating the similarity of the robot’s $xy$ -coordinate trajectories using FastDTW, we retrieve data from the $\mathcal D_{\text{prior}}$ that have trajectories similar to the target data’s trajectories.|
+      | FEW-SHOT IMITATION LEARNING | We compare our method with a few-shot adaptation method. We trained the multi-task policy from $\mathcal D_{\text{prior}}$ and fine-tuned it using $\mathcal D_{\text{target}}$.|
+
+      The Table shows our retrieval-augmented policy training outperforms few-shot imitation learning and agent-wise trajectory matching. These results indicate that our approach is more effective in tasks requiring advanced robot coordination, particularly in scenarios with a larger number of robots or in more complex tasks.
+
+      ### Real-robot Experiments
       To validate the efficacy of our method in the real
       world, we use demonstrations of real wheeled robots for
       querying the prior dataset $D_{\text{prior}}$ constructed in simulated
       environments. We then train the policy using a few
       real-robot data augmented with the retrieved simulation
       demonstrations.
-      <div class="uk-child-width-expand@s" uk-grid>
+      <div class="uk-child-width-expand@m" uk-grid>
         <div class="">
           <img src="assets/exp_setting.png" alt="setting" />
         </div>
         <div class="">
-          We employ our custom-designed swarm robot platform, <a href="https://github.com/omron-sinicx/swarm-body" class="uk-text-bold" target="_blank">``maru''</a> , where the wheeled
+          We employ our custom-designed swarm robot platform, <a href="https://github.com/omron-sinicx/swarm-body" class="uk-text-bold" target="_blank">``maru''</a>. The wheeled
           microrobots communicate with the host computer using 2.4
           GHz wireless communication. The positions of all robots
           and an object are tracked in real time by a high-speed digital
           light processing (DLP) structured light projector system.
           We can control the positions of the robots by sending 2D
-          coordinates of their future locations from the host compute
+          coordinates of their future locations from the host computer.
+          We collect three demonstrations that naviate robots toward a given goal state using a hand-gesture system with Leap Motion, where the hands' movement is translated into the trajectories of multiple robots.
+          Using the real-robot demonstrations as queries, we retrieve 300 simulated demonstrations from the prior dataset for each query.
         </div>
       </div>
+
       <div class="uk-child-width-expand@m" uk-grid>
         <div class="">
           <h5 class="uk-text-center">Query<br/>(Human Demonstration)</h5>
@@ -186,7 +201,10 @@ body:
       results clearly demonstrate that the policy trained by our
       retrieve-and-learn framework successfully pushes an object
       closer to the goal state, while the policy trained using only
-      a few real demonstrations fails to complete the task.
+      a few real demonstrations (No Retrieved Data) fails to complete the task.
+  - title: Acknowledgements
+    text: |
+      This work was supported by JST AIP Acceleration Research JPMJCR23U2, Japan.
 
 projects:
   - title: 'maru: a miniature-sized wheeled robot for swarm robotics research'

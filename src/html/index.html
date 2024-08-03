@@ -4,27 +4,27 @@
     <meta charset="utf-8" />
     <script>
       window.onload = function () {
-        var x = 170; // 185
-        var y = 110; // 67
-        var w = 170; // 178
-        var h = 60; // 60
-        var angle = (-40 * Math.PI) / 180; // -1
+        const x = 170; // 185
+        const y = 110; // 67
+        const w = 180; // 178
+        const h = 60; // 60
+        const angle = (-42 * Math.PI) / 180; // -1
 
-        var cos = Math.cos(angle);
-        var sin = Math.sin(angle);
+        const cos = Math.cos(angle);
+        const sin = Math.sin(angle);
 
-        var x1 = x - (w / 2) * cos + (h / 2) * sin;
-        var y1 = y - (w / 2) * sin - (h / 2) * cos;
-        var x2 = x + (w / 2) * cos + (h / 2) * sin;
-        var y2 = y + (w / 2) * sin - (h / 2) * cos;
-        var x3 = x + (w / 2) * cos - (h / 2) * sin;
-        var y3 = y + (w / 2) * sin + (h / 2) * cos;
-        var x4 = x - (w / 2) * cos - (h / 2) * sin;
-        var y4 = y - (w / 2) * sin + (h / 2) * cos;
+        const x1 = x - (w / 2) * cos + (h / 2) * sin;
+        const y1 = y - (w / 2) * sin - (h / 2) * cos;
+        const x2 = x + (w / 2) * cos + (h / 2) * sin;
+        const y2 = y + (w / 2) * sin - (h / 2) * cos;
+        const x3 = x + (w / 2) * cos - (h / 2) * sin;
+        const y3 = y + (w / 2) * sin + (h / 2) * cos;
+        const x4 = x - (w / 2) * cos - (h / 2) * sin;
+        const y4 = y - (w / 2) * sin + (h / 2) * cos;
 
-        var canvas_ary = document.querySelectorAll('.js-video-demo');
+        const canvas_ary = document.querySelectorAll('.js-video-demo');
         canvas_ary.forEach((canvas) => {
-          var context = canvas.getContext('2d');
+          const context = canvas.getContext('2d');
           context.beginPath();
           context.moveTo(x1, y1);
           context.lineTo(x2, y2);
@@ -32,9 +32,9 @@
           context.lineTo(x4, y4);
           context.closePath();
 
-          context.lineWidth = 3; // 線の太さ
+          context.lineWidth = 3;
           context.fillStyle = 'rgb(0 0 0 / 20%)';
-          context.strokeStyle = 'white'; // 線の色
+          context.strokeStyle = 'white';
 
           context.stroke();
           context.fill();
