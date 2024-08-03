@@ -55,3 +55,15 @@ $navbar-background: $theme-color;
 @import 'uikit/src/scss/uikit.scss';
 @import '~normalize.css/normalize.css';
 // @import "uikit/src/scss/uikit-theme.scss";
+
+.video-container {
+  position: relative;
+  width: 320px;
+  height: 200px;
+}
+
+video, canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}

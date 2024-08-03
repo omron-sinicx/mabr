@@ -89,7 +89,54 @@ body:
       Given past trajectory sequences with a temporal time window H, X =
   - title: Results
     text: |
-      ### Real-robot Experiments
+      ### Quantitative Results on Simulated Demonstrations
+
+      <div class="uk-overflow-auto">
+        <table class="uk-table uk-table-small uk-text-small uk-table-divider">
+          <thead>
+            <tr>
+              <th rowspan="2">Num of Agents</th>
+              <th colspan="2" class="uk-text-center">task</th>
+              <th colspan="3" class="uk-text-center">success rate ⬆️ [%]</th>
+            </tr>
+            <tr>
+              <th>object</th>
+              <th>level</th>
+              <th>trajectory matching</th>
+              <th>few-shot imitation learning</th>
+              <th>✨ours✨</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2</td>
+              <td>🧱block<br/><br/>🪄stick<br/><br/></td>
+              <td><span class="uk-text-danger">hard</span><br/><span class="uk-text-success">easy</span><br/><span class="uk-text-danger">hard</span><br/><span class="uk-text-success">easy</span></td>
+              <td><span class="uk-text-bold">41.4&plusmn;5.9</span><br/>55.7&plusmn;6.0<br/>32.9&plusmn;5.7<br/><span class="uk-text-bold">68.6&plusmn;5.6</span></td>
+              <td>20.0&plusmn;4.8<br/>15.7&plusmn;4.4<br/>5.7&plusmn;2.8<br/>12.9&plusmn;4.0</td>
+              <td><span class="uk-text-bold">41.4&plusmn;5.9<br/>57.1&plusmn;6.0<br/>35.7&plusmn;5.8</span><br/>67.1&plusmn;5.7</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>🧱block<br/><br/>🪄stick<br/><br/></td>
+              <td><span class="uk-text-danger">hard</span><br/><span class="uk-text-success">easy</span><br/><span class="uk-text-danger">hard</span><br/><span class="uk-text-success">easy</span></td>
+              <td>32.9&plusmn;5.7<br/>34.3&plusmn;5.7<br/>34.3&plusmn;5.7<br/>52.9&plusmn;6.0</td>
+              <td><span class="uk-text-bold">48.6&plusmn;6.0</span><br/>77.1&plusmn;5.1<br/>28.6&plusmn;5.4<br/><span class="uk-text-bold">67.1&plusmn;5.7</span></td>
+              <td>42.9&plusmn;6.0<br/><span class="uk-text-bold">90.0&plusmn;3.6<br/>41.4&plusmn;5.9</span><br/>65.7&plusmn;5.7</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>🧱block<br/><br/>🪄stick<br/><br/></td>
+              <td><span class="uk-text-danger">hard</span><br/><span class="uk-text-success">easy</span><br/><span class="uk-text-danger">hard</span><br/><span class="uk-text-success">easy</span></td>
+              <td>55.7&plusmn;6.0<br/>78.6&plusmn;4.9<br/>18.6&plusmn;4.7<br/>52.9&plusmn;6.0</td>
+              <td>38.6&plusmn;5.9<br/>55.7&plusmn;6.0<br/>7.10&plusmn;3.1<br/>57.1&plusmn;6.0</td>
+              <td class="uk-text-bold">58.6&plusmn;5.9<br/>88.6&plusmn;3.8<br/>24.3&plusmn;5.2<br/>70.0&plusmn;5.5</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      ### Real-robot Demonstration
       To validate the efficacy of our method in the real
       world, we use demonstrations of real wheeled robots for
       querying the prior dataset $D_{\text{prior}}$ constructed in simulated
@@ -110,21 +157,30 @@ body:
           coordinates of their future locations from the host compute
         </div>
       </div>
-      <div class="" uk-grid>
-        <div class="uk-width-1-5">
-          <h5 class="uk-text-center">Query</h5>
-          <video src="assets/query.mp4" width="1800" height="1200" loop muted playsinline></video>
-          <span class="uk-text-meta">demonstration</span>
+      <div class="uk-child-width-expand@m" uk-grid>
+        <div class="">
+          <h5 class="uk-text-center">Query<br/>(Human Demonstration)</h5>
+          <div class="video-container uk-align-center">
+            <video src="assets/query.mp4" width="1800" height="1200" uk-video="autoplay: inview" loop muted playsinline></video>
+            <canvas class="js-video-demo" width="320" height="200"></canvas>
+          </div>
         </div>
-        <div class="uk-width-2-5">
-          <h5 class="uk-text-center">Proposed (Query+Retrieved)</h5>
-          <video src="assets/ours.mp4" width="1800" height="1200" loop muted playsinline></video>
+        <div class="">
+          <h5 class="uk-text-center">Baseline<br/>(No Retrieved Data)</h5>
+          <div class="video-container uk-align-center">
+            <video src="assets/baseline.mp4" width="1800" height="1200" uk-video="autoplay: inview" loop muted playsinline></video>
+            <canvas class="js-video-demo" width="320" height="200"></canvas>
+          </div>
         </div>
-        <div class="uk-width-2-5">
-          <h5 class="uk-text-center">Baseline (No Retrieved Data)</h5>
-          <video src="assets/baseline.mp4" width="1800" height="1200" loop muted playsinline></video>
+        <div class="">
+          <h5 class="uk-text-center">Ours<br/>(Query+Retrieved)</h5>
+          <div class="video-container uk-align-center">
+            <video src="assets/ours.mp4" width="1800" height="1200" uk-video="autoplay: inview" loop muted playsinline></video>
+            <canvas class="js-video-demo" width="320" height="200"></canvas>
+          </div>
         </div>
       </div>
+
       We compare our policy trained using the real and retrieved demonstrations and the
       one trained using only the real-robot demonstrations. The
       results clearly demonstrate that the policy trained by our
@@ -135,12 +191,6 @@ body:
 projects:
   - title: 'maru: a miniature-sized wheeled robot for swarm robotics research'
     journal: "CHI'24"
-    img: 'https://github.com/omron-sinicx/swarm-body/raw/main/images/teaser.jpg'
-    description: |
-      "maru" (= miniature assemblage adaptive robot unit) is a custom-made, miniature-sized, two-wheeled robot designed specifically for tabletop swarm robotics research.
-    url: https://github.com/omron-sinicx/swarm-body
-  - title: 'Language-Guided Pattern Formation for Swarm Robotics with Multi-Agent Reinforcement Learning'
-    journal: "IROS'24"
     img: 'https://github.com/omron-sinicx/swarm-body/raw/main/images/teaser.jpg'
     description: |
       "maru" (= miniature assemblage adaptive robot unit) is a custom-made, miniature-sized, two-wheeled robot designed specifically for tabletop swarm robotics research.
