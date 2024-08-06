@@ -7,7 +7,7 @@ resources:
   paper: https://arxiv.org/abs/2312.02008
   code: # TBD
   video: # TBD
-  blog: https://medium.com/sinicx/multipolar-multi-source-policy-aggregation-for-transfer-reinforcement-learning-between-diverse-bc42a152b0f5
+  blog: 
   huggingface: # NA
 description: introduces the Multi-Agent Coordination Skill Database, allowing multiple mobile robots to efficiently use past memories to adapt to new tasks.
 image: https://omron-sinicx.github.io/mabr/assets/teaser.png
