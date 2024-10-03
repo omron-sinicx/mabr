@@ -7,10 +7,10 @@ resources:
   paper: https://arxiv.org/abs/2312.02008
   code: # TBD
   video: # TBD
-  blog: 
+  blog:
   huggingface: # NA
 description: introduces the Multi-Agent Coordination Skill Database, allowing multiple mobile robots to efficiently use past memories to adapt to new tasks.
-image: https://omron-sinicx.github.io/mabr/assets/teaser.png
+image: https://omron-sinicx.github.io/mabr/assets/method.png
 url: https://omron-sinicx.github.io/mabr
 speakerdeck: # TBD
 authors:
