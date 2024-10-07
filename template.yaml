@@ -6,7 +6,7 @@ conference: IROS2024
 resources:
   paper: https://arxiv.org/abs/2312.02008
   code: # TBD
-  video: https://www.youtube.com/embed/1PewLtmeAnc?si=3b4Nh3MgjUmx5dXT
+  video: https://www.youtube.com/embed/RSUhHHxz5Vk?si=QBvMKmtM8TCvzw0e
   blog:
   huggingface: # NA
 description: introduces the Multi-Agent Coordination Skill Database, allowing multiple mobile robots to efficiently use past memories to adapt to new tasks.
