@@ -212,3 +212,9 @@ projects:
     description: |
       "maru" (= miniature assemblage adaptive robot unit) is a custom-made, miniature-sized, two-wheeled robot designed specifically for tabletop swarm robotics research.
     url: https://github.com/omron-sinicx/swarm-body
+  - title: 'Language-Guided Pattern Formation for Swarm Robotics with Multi-Agent Reinforcement Learning'
+    journal: "IROS'24"
+    img: 'https://omron-sinicx.github.io/language-guided-pattern-formation/assets/overview.jpg'
+    description: |
+      This paper explores how to leverage the vast knowledge encoded in large language models to tackle pattern formation challenges for swarm robotics systems.
+    url: https://omron-sinicx.github.io/language-guided-pattern-formation/
