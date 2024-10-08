@@ -1,8 +1,11 @@
-## [IROS'24] Multi-Agent Behavior Retrieval: Retrieval-Augmented Policy Training for Cooperative Push Manipulation by Mobile Robots
+# Multi-Agent Behavior Retrieval
 
-[![arxiv](https://img.shields.io/badge/2024-IROS-red.svg)](https://iros2024-abudhabi.org/)
+[![conference](https://img.shields.io/badge/2024-IROS-red.svg)](https://iros2024-abudhabi.org/)
 
-[[project page](https://omron-sinicx.github.io/mabr/)] [[paper](https://arxiv.org/abs/2312.02008)]
+[**Project**](https://omron-sinicx.github.io/mabr/)
+| [**Paper**](https://arxiv.org/abs/2312.02008)
+
+[IROS'24] Multi-Agent Behavior Retrieval: Retrieval-Augmented Policy Training for Cooperative Push Manipulation by Mobile Robots
 
 ## Citation
 ```
